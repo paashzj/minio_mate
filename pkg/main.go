@@ -2,7 +2,7 @@ package main
 
 import (
 	"go.uber.org/zap"
-	"minio_mate/pkg/path"
+	"minio_mate/pkg/minio"
 	"minio_mate/pkg/util"
 	"os"
 	"os/signal"
@@ -12,7 +12,7 @@ func main() {
 	util.Logger().Debug("this is a debug msg")
 	util.Logger().Info("this is a info msg")
 	util.Logger().Error("this is a error msg")
-	err := util.CallScript(path.MinioStartScript)
+	err := minio.Start()
 	if err != nil {
 		util.Logger().Error("start minio server failed ", zap.Error(err))
 	} else {
